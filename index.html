@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#a9ddff">
+<title>For Zaa ☁️🩵</title>
+<style>
+  :root { --sky:#a9ddff; --deep:#347fb7; --ink:#245071; --white:#fff; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; min-height:100%; font-family: "Trebuchet MS", system-ui, sans-serif; color:var(--ink); }
+  body {
+    min-height:100vh; overflow-x:hidden;
+    background:linear-gradient(180deg,#75c7ff 0%,#bce7ff 48%,#eefaff 100%);
+  }
+  #sky-canvas { position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+  .sun-glow { position:fixed; width:55vw;height:55vw;max-width:560px;max-height:560px; border-radius:50%;
+    top:-18vw;right:-12vw;background:radial-gradient(circle,rgba(255,255,255,.85),rgba(255,255,255,0) 68%); z-index:0; pointer-events:none; }
+  .page { position:relative;z-index:1; width:min(900px,92vw); margin:auto; padding:38px 0 56px; text-align:center; }
+  .tag { display:inline-block; padding:8px 15px; border:1px solid rgba(255,255,255,.75); background:rgba(255,255,255,.35); border-radius:999px; font-size:.86rem; letter-spacing:.04em; backdrop-filter:blur(8px); }
+  h1 { font-size:clamp(2.5rem,8vw,5rem); line-height:1.02; margin:22px 0 12px; color:#fff; text-shadow:0 5px 20px rgba(44,119,171,.22); }
+  .subtitle { font-size:clamp(1rem,3vw,1.25rem); max-width:620px; margin:0 auto 25px; line-height:1.7; }
+  .scene { min-height:260px; display:grid; place-items:center; perspective:900px; margin:10px auto 22px; }
+  .cloud { position:relative; width:min(290px,72vw); height:110px; background:linear-gradient(145deg,#fff,#e8f7ff); border-radius:70px; filter:drop-shadow(0 20px 20px rgba(43,123,174,.2)); animation:float 4.5s ease-in-out infinite; transform-style:preserve-3d; }
+  .cloud:before,.cloud:after { content:""; position:absolute; background:linear-gradient(145deg,#fff,#e8f7ff); border-radius:50%; }
+  .cloud:before { width:135px;height:135px;left:35px;top:-58px; }
+  .cloud:after { width:105px;height:105px;right:28px;top:-35px; }
+  .cloud span { position:absolute; z-index:2; inset:0; display:grid;place-items:center; font-size:2.4rem; transform:translateZ(30px); }
+  @keyframes float { 0%,100%{transform:translateY(0) rotateX(4deg) rotateY(-5deg)} 50%{transform:translateY(-14px) rotateX(-2deg) rotateY(5deg)} }
+  .button { border:0; cursor:pointer; padding:14px 23px; border-radius:999px; font-size:1rem; font-weight:700; color:#28628a; background:#fff; box-shadow:0 9px 0 #78b9e6,0 15px 28px rgba(44,119,171,.2); transition:transform .2s,box-shadow .2s; }
+  .button:hover { transform:translateY(-3px); box-shadow:0 12px 0 #78b9e6,0 18px 30px rgba(44,119,171,.2); }
+  .button:active { transform:translateY(3px); box-shadow:0 5px 0 #78b9e6; }
+  .card { margin:28px auto 0; max-width:700px; padding:clamp(20px,5vw,36px); border:1px solid rgba(255,255,255,.8); border-radius:28px; background:rgba(255,255,255,.57); box-shadow:0 18px 60px rgba(51,125,174,.15); backdrop-filter:blur(14px); text-align:left; }
+  .card h2 { text-align:center; margin:0 0 15px; color:#347fb7; font-size:clamp(1.5rem,5vw,2.1rem); }
+  .letter { line-height:1.85; white-space:pre-line; font-size:1.04rem; }
+  .hidden { display:none; }
+  .memory-frame { width:min(310px,100%); aspect-ratio:4/3; margin:20px auto 10px; padding:12px 12px 36px; border-radius:12px; background:#fff; box-shadow:0 18px 35px rgba(37,105,151,.22); transform:rotate(-2deg); transition:transform .4s; }
+  .memory-frame:hover { transform:rotate(2deg) translateY(-5px); }
+  .memory-frame img { width:100%;height:100%;object-fit:cover;border-radius:5px;background:linear-gradient(135deg,#d9f1ff,#f6fcff); }
+  .caption { text-align:center;font-size:.9rem; margin:8px 0 0; opacity:.85; }
+  .hint { font-size:.88rem; opacity:.8; text-align:center; line-height:1.6; }
+  .footer { margin-top:34px;font-size:.9rem;color:#3d759a; }
+  .heart { position:fixed; z-index:2; pointer-events:none; animation:rise 3.4s ease-out forwards; font-size:20px; }
+  @keyframes rise { from{transform:translateY(0) scale(.6);opacity:0} 15%{opacity:1} to{transform:translateY(-85vh) scale(1.3) rotate(20deg);opacity:0} }
+  .stars { letter-spacing:.35em;color:#fff;font-size:1.1rem; }
+  @media (prefers-reduced-motion: reduce) { *,*:before,*:after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+</style>
+</head>
+<body>
+<canvas id="sky-canvas" aria-hidden="true"></canvas>
+<div class="sun-glow" aria-hidden="true"></div>
+<main class="page">
+  <div class="tag">A tiny piece of sky, made just for you ☁️</div>
+  <h1>Happy Birthday,<br> Zaa! 🩵</h1>
+  <p class="subtitle">If I could send you one thing today, it would be the clearest blue sky — just to remind you that someone is cheering for your happiness from afar.</p>
+  <div class="scene" aria-label="A floating 3D-style cloud">
+    <div class="cloud"><span>🩵</span></div>
+  </div>
+  <p class="stars">✦ &nbsp; ☁️ &nbsp; ✦ &nbsp; ☁️ &nbsp; ✦</p>
+  <button class="button" id="openBtn">Open your little surprise 💌</button>
+
+  <section class="card hidden" id="letterCard">
+    <h2>A letter for you ☁️</h2>
+    <div class="letter">Happy birthday, Zaa! 🩵
+
+I wish I could be there to celebrate with you in person, but until that day, I hope this little corner of the internet makes you smile.
+
+Thank you for being someone who makes ordinary days feel a little more special. Even when we're far apart, I'm happy that we get to share our little moments, laugh together, and make memories in our own way.
+
+I hope this new year of your life brings you peaceful days, big smiles, lovely surprises, and so many reasons to be proud of yourself. And whenever life feels cloudy, I hope you remember that you deserve kindness, happiness, and a sky full of good things.
+
+Today is your day, birthday girl. Enjoy every little moment — and don't forget that someone is sending you the biggest virtual hug. 🫂🩵
+
+Happy birthday again, Zaa. Keep shining, my favourite sky. ☁️💙</div>
+    <p class="hint">P.S. You're officially one year more powerful… but still probably going to tease me in-game. 😂🎮</p>
+  </section>
+
+  <section class="card" id="memoryCard">
+    <h2>One of our little memories 🎮</h2>
+    <div class="memory-frame">
+      <img id="memoryImage" src="game-memory.jpg" alt="Your gaming memory together" onerror="this.style.display='none';document.getElementById('placeholder').style.display='grid';">
+      <div id="placeholder" style="display:none;width:100%;height:100%;place-items:center;text-align:center;padding:18px;background:linear-gradient(135deg,#d8f1ff,#f8fdff);border-radius:5px;">
+        <div><div style="font-size:2.5rem">🎮🩵</div><strong>Your favourite game picture goes here</strong><br><small>Replace game-memory.jpg with your screenshot.</small></div>
+      </div>
+    </div>
+    <p class="caption">A little memory, with a lot of meaning. 🩵</p>
+  </section>
+
+  <section class="card hidden" id="finalCard">
+    <h2>One last thing… 🌤️</h2>
+    <p class="letter" style="text-align:center">Different places, maybe different skies — but I'm really glad our paths crossed. I hope your birthday feels as lovely as a perfect blue-sky day. 🩵</p>
+    <div style="text-align:center;margin-top:18px"><button class="button" id="heartBtn">Send some birthday hearts 💗</button></div>
+  </section>
+  <div style="margin-top:24px"><button class="button" id="finalBtn" style="background:#eaf8ff">There's one more thing ☁️</button></div>
+  <div class="footer">Made with care, just for Zaa 🩵</div>
+</main>
+<script>
+  // Lightweight animated sky particles; no extra libraries required.
+  const canvas = document.getElementById('sky-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, dpr, puffs = [];
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth; h = window.innerHeight;
+    canvas.width = w*dpr; canvas.height = h*dpr; canvas.style.width=w+'px'; canvas.style.height=h+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    puffs = Array.from({length: Math.min(38, Math.floor(w/22))}, () => ({
+      x:Math.random()*w,y:Math.random()*h,r:1+Math.random()*3,
+      speed:.12+Math.random()*.38,alpha:.15+Math.random()*.35
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(const p of puffs){
+      p.y -= p.speed;
+      if(p.y < -10){p.y=h+10;p.x=Math.random()*w;}
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${p.alpha})`;ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize); resize(); draw();
+
+  const openBtn=document.getElementById('openBtn');
+  openBtn.addEventListener('click',()=>{
+    document.getElementById('letterCard').classList.remove('hidden');
+    openBtn.textContent='Your letter is open 🩵';
+    openBtn.disabled=true;
+    document.getElementById('letterCard').scrollIntoView({behavior:'smooth',block:'start'});
+    hearts(12);
+  });
+  document.getElementById('finalBtn').addEventListener('click',()=>{
+    document.getElementById('finalCard').classList.remove('hidden');
+    document.getElementById('finalCard').scrollIntoView({behavior:'smooth',block:'center'});
+    hearts(8);
+  });
+  document.getElementById('heartBtn').addEventListener('click',()=>hearts(28));
+  function hearts(n){
+    const emojis=['🩵','💙','🤍','💗','☁️','✨'];
+    for(let i=0;i<n;i++){
+      const el=document.createElement('div');el.className='heart';
+      el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+      el.style.left=(5+Math.random()*90)+'vw';el.style.bottom=(5+Math.random()*25)+'vh';
+      el.style.animationDelay=(Math.random()*.7)+'s';
+      document.body.appendChild(el);setTimeout(()=>el.remove(),4300);
+    }
+  }
+</script>
+</body>
+</html>
